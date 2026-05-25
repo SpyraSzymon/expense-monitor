@@ -1,5 +1,6 @@
 package com_spyra.expense_monitor.expense;
 
+import com_spyra.expense_monitor.category.Categoryrepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -10,9 +11,11 @@ import java.util.List;
 @Service
 public class ExpenseService {
     private final ExpenseRepository expenseRepository;
+    private final Categoryrepository categoryRepository;
 
-    public ExpenseService(ExpenseRepository expenseRepository) {
+    public ExpenseService(ExpenseRepository expenseRepository, Categoryrepository categoryRepository) {
         this.expenseRepository = expenseRepository;
+        this.categoryRepository = categoryRepository;
     }
 
 
