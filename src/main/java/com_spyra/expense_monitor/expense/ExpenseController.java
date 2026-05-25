@@ -11,12 +11,11 @@ import java.util.List;
 public class ExpenseController {
 
 
-        private final ExpenseService expenseService;
+    private final ExpenseService expenseService;
 
-        public ExpenseController(ExpenseService expenseService) {
-            this.expenseService = expenseService;
-        }
-
+    public ExpenseController(ExpenseService expenseService) {
+        this.expenseService = expenseService;
+    }
 
 
     @PostMapping
@@ -24,8 +23,9 @@ public class ExpenseController {
     public Expense createExpense(@RequestBody ExpenseRequest request) {
         if (request == null) throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Request body is required");
 
-        return expenseService.createExpense(request.amount());
+        return expenseService.createExpense(request.amount(), request.category_id(), request.date());
     }
+
     @GetMapping
     public List<Expense> getExpense() {
         return expenseService.getExpense();
